@@ -27,6 +27,7 @@ You can customize the map size, but to be honest its kinda a pain in the ass
 - Type 'create' in command line
   - I've had mixed results with this, you can get it to work but for some reason it always asks for another parameter, but sometimes it works fine and does not.
   -IF it works, it will be kinda slow. Give it time.
--Make sure to move "GAME OVER" text from the "OVER" layer so that it is visisble from new grid
+- Make sure to move "GAME OVER" text from the "OVER" layer so that it is visisble from new grid
+
 You can change things like speed of the snake and such
 - Open Snake.lsp and change variables at your own discresion
