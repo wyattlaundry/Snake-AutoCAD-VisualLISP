@@ -1,6 +1,6 @@
 # Snake in AutoCAD
 
-##Install
+## Install
 Installation of this snake game is really easy, it just requires a few steps
 
 - Open 'Snake.dwg' in AutoCAD
@@ -9,7 +9,7 @@ Installation of this snake game is really easy, it just requires a few steps
   - Click 'Load' 
     - If prompted, click 'Always Load'
 
-##How to Play
+## How to Play
 There are only 2 things you need to know to play Snake in AutoCAD
 - Type 'Snake' in the command line
 - Snake will follow your mouse
@@ -19,7 +19,7 @@ Disclaimers:
 - The game gets pretty slow after a while
 - This may have bugs but it works good enough
 
-##Customization
+## Customization
 You can customize the map size, but to be honest its kinda a pain in the ass
 - Open Snake.lsp, and edit 'col' and 'row' to desired size (its on the first few lines)
   - Save and close + May need to reload program
