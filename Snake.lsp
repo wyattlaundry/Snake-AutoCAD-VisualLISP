@@ -3,6 +3,8 @@
 
 (setq *time-flag* 0)
 
+(vl-load-com)
+
 (defun c:create()
 
   (setq topRight (strcat (rtos (* col size)) "," (rtos (* row size)) ))
@@ -38,6 +40,9 @@
   ;Clear Board
   (Clear)
 
+  ;Hide game Over
+  (command "-layer" "off" "OVER" "")
+
   ;Init vars
   (setq speed 200)
   (setq mouse (cadr (grread T)))
@@ -69,7 +74,7 @@
   )
 
   ;Main Loop - while not on end button
-  (while (and (= gameover nil) (not (and (< (car mouse) -1.5) (> (car mouse) -19) (< (cadr mouse) 6) (> (cadr mouse) 0) )))
+  (while (= gameover nil)
 
     	(setq mouse (cadr (grread T)))
     	(setq headAsCoords (list (+ 1 (* size (car (last body)))) (+ 1 (* size (cadr (last body))))))
@@ -122,14 +127,19 @@
 
 		)
 
-	       	;End game if overlap or off screen
-	       	(if (or (LM:Unique-p body)(> (car (last body)) (- col 1)) (> (cadr (last body)) (- row 1))) (setq gameover t))
+	       	;End game if overlap or out of bounds
+	       	(if (or (not (LM:Unique-p body))(> (car (last body)) (- col 1)) (> (cadr (last body)) (- row 1)) (< (car (last body)) 0) (< (cadr (last body)) 0)) (setq gameover t))
 	       	
 	   )
 	)
 
     
-  )  
+  )
+
+
+  ;Display Game Over
+  (command "-layer" "on" "OVER" "")
+  
 )
 
 (defun DrawApple(pos)
