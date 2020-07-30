@@ -48,7 +48,8 @@
   (setq mouse (cadr (grread T)))
   (setq timeSinceMoved 0)
   (setq gameover nil)
-
+  (setq oldDir (GetDirection '(0 0) '(2 1)))
+  
   (setq body (list '(2 4) '(3 4) '(3 5) '(3 6) ))
   (setq apple (GetApple body))
 
@@ -85,11 +86,15 @@
 
     	(setq timeSinceMoved (+ timeSinceMoved (timer)))
 
-    	(cond ( (> timeSinceMoved speed)
+    	;Only move if in a valid direction and time delay
+    	(cond ( (and (> timeSinceMoved speed)	(not (and (= dirX (- 0 (car oldDir)) ) (= dirY (- 0 (cadr oldDir)) ) ))	)
 
 	       	;Reset Time
-		(setq timeSinceMoved 0)	
-	
+		(setq timeSinceMoved 0)
+	       
+	       	;set new 'old' direction
+		(setq oldDir direction)
+	       
     		;Add new point
     		(setq body (append body (list (list (+ dirX (car (last body))) (+ dirY (cadr (last body))) ) )))
 
